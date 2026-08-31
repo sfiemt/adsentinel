@@ -1,6 +1,8 @@
 # Event Viewer CLI
 
-Programa em Python para **monitorar eventos do Active Directory** (criação/exclusão de usuários e grupos, logons, bloqueios de conta, alterações de objetos e de política de domínio — ver [AD.md](AD.md)) a partir do **Windows Event Viewer**. Também funciona como leitor genérico de qualquer log (Application, System, etc.), com filtros por ID, nível, origem, usuário, data ou palavra-chave, exportação para console, CSV ou JSON, e acompanhamento em tempo real (modo `--watch`).
+Programa em Python para **monitorar eventos do Active Directory** (criação/exclusão de usuários e grupos, logons, bloqueios de conta, alterações de objetos e de política de domínio — ver [AD.md](AD.md)) a partir do **[Windows Event Viewer](https://learn.microsoft.com/pt-pt/shows/inside/event-viewer)**. Também funciona como leitor genérico de qualquer log (Application, System, etc.), com filtros por ID, nível, origem, usuário, data ou palavra-chave, exportação para console, CSV ou JSON, e acompanhamento em tempo real (modo `--watch`).
+
+> **Saiba mais sobre o Event Viewer:** [learn.microsoft.com/pt-pt/shows/inside/event-viewer](https://learn.microsoft.com/pt-pt/shows/inside/event-viewer)
 
 ## Requisitos
 

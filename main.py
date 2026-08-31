@@ -46,7 +46,7 @@ EVENT_TYPE_NAMES = {
 EVENT_TYPE_BY_NAME = {v.lower(): k for k, v in EVENT_TYPE_NAMES.items()}
 
 # Event IDs do log "Security" relevantes para monitoramento do Active
-# Directory (ver CLAUDE.md). Usados pelo modo --ad para filtrar e para
+# Directory (ver AD.md). Usados pelo modo --ad para filtrar e para
 # rotular cada evento com a acao correspondente.
 AD_EVENT_ACTIONS = {
     4720: "Usuario criado",
@@ -74,9 +74,9 @@ AD_EVENT_ACTIONS = {
     5141: "Objeto do AD excluido",
     4739: "Politica de dominio alterada",
 }
+
 AD_EVENT_IDS = sorted(AD_EVENT_ACTIONS.keys())
 AD_LOG_NAME = "Security"
-
 
 @dataclass
 class EventRecord:
@@ -272,7 +272,7 @@ def parse_args(argv=None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Consulta/monitora o Windows Event Viewer, com foco em auditoria do Active Directory."
     )
-    parser.add_argument("--ad", action="store_true", help="Modo Active Directory: usa --log Security e os Event IDs de auditoria do AD (ver CLAUDE.md), a menos que --log/--event-id sejam informados explicitamente")
+    parser.add_argument("--ad", action="store_true", help="Modo Active Directory: usa --log Security e os Event IDs de auditoria do AD (ver AD.md), a menos que --log/--event-id sejam informados explicitamente")
     parser.add_argument("--log", default=None, help="Nome do log (Application, System, Security, ...). Padrao: Application (Security se --ad)")
     parser.add_argument("--server", default=None, help="Computador remoto (padrao: local)")
     parser.add_argument("--event-id", default=None, help="IDs de evento, separados por virgula. Ex: 4624,4625")

@@ -1,6 +1,6 @@
 # Event Viewer CLI
 
-Programa em Python para **monitorar eventos do Active Directory** (criação/exclusão de usuários e grupos, logons, bloqueios de conta, alterações de objetos e de política de domínio — ver [CLAUDE.md](CLAUDE.md)) a partir do **Windows Event Viewer**. Também funciona como leitor genérico de qualquer log (Application, System, etc.), com filtros por ID, nível, origem, usuário, data ou palavra-chave, exportação para console, CSV ou JSON, e acompanhamento em tempo real (modo `--watch`).
+Programa em Python para **monitorar eventos do Active Directory** (criação/exclusão de usuários e grupos, logons, bloqueios de conta, alterações de objetos e de política de domínio — ver [AD.md](AD.md)) a partir do **Windows Event Viewer**. Também funciona como leitor genérico de qualquer log (Application, System, etc.), com filtros por ID, nível, origem, usuário, data ou palavra-chave, exportação para console, CSV ou JSON, e acompanhamento em tempo real (modo `--watch`).
 
 ## Requisitos
 
@@ -35,7 +35,7 @@ python main.py --log Application --limit 10
 Para acompanhar ações administrativas do AD (criação/exclusão de usuários e
 grupos, logons, bloqueios de conta, alterações de objetos e política de
 domínio), use o modo `--ad`. Ele aplica automaticamente `--log Security` e os
-Event IDs listados em [CLAUDE.md](CLAUDE.md):
+Event IDs listados em [AD.md](AD.md):
 
 ```powershell
 python main.py --ad --limit 200 --output csv --outfile ad_events.csv
@@ -69,7 +69,7 @@ Lista todos os canais/logs de evento disponíveis no computador (ex: `Applicatio
 
 | Opção | Descrição | Exemplo |
 |---|---|---|
-| `--ad` | Modo Active Directory: usa `--log Security` e filtra pelos Event IDs de auditoria do AD (ver [CLAUDE.md](CLAUDE.md)), rotulando cada evento com a ação correspondente | `--ad` |
+| `--ad` | Modo Active Directory: usa `--log Security` e filtra pelos Event IDs de auditoria do AD (ver [AD.md](AD.md)), rotulando cada evento com a ação correspondente | `--ad` |
 | `--log` | Nome do log a consultar (padrão: `Application`, ou `Security` se `--ad`) | `--log System` |
 | `--server` | Computador remoto a consultar (padrão: local) | `--server SRV01` |
 | `--event-id` | IDs de evento, separados por vírgula | `--event-id 4624,4625` |
@@ -85,7 +85,7 @@ Lista todos os canais/logs de evento disponíveis no computador (ex: `Applicatio
 | `--watch` | Acompanha novos eventos em tempo real (ignora `--limit`/histórico) | `--watch` |
 | `--interval` | Intervalo em segundos entre checagens no modo `--watch` (padrão: 2) | `--interval 5` |
 | `--list-logs` | Lista os logs/canais disponíveis e encerra | `--list-logs` |
-| `--list-ad-ids` | Lista os Event IDs de auditoria do AD conhecidos (ver [CLAUDE.md](CLAUDE.md)) e encerra | `--list-ad-ids` |
+| `--list-ad-ids` | Lista os Event IDs de auditoria do AD conhecidos (ver [AD.md](AD.md)) e encerra | `--list-ad-ids` |
 
 Os filtros podem ser combinados livremente.
 

@@ -74,7 +74,7 @@ Lista todos os canais/logs de evento disponíveis no computador (ex: `Applicatio
 | `--ad` | Modo Active Directory: usa `--log Security` e filtra pelos Event IDs de auditoria do AD (ver [AD.md](AD.md)), rotulando cada evento com a ação correspondente | `--ad` |
 | `--log` | Nome do log a consultar (padrão: `Application`, ou `Security` se `--ad`) | `--log System` |
 | `--server` | Computador remoto a consultar (padrão: local) | `--server SRV01` |
-| `--event-id` | IDs de evento, separados por vírgula | `--event-id 4624,4625` |
+| `--event-id` | IDs de evento, separados por vírgula. Se omitido: sem `--ad`, não filtra por ID (traz todos os eventos do log, sujeitos aos demais filtros); com `--ad`, usa a lista padrão de IDs do AD (ver [AD.md](AD.md)) | `--event-id 4624,4625` |
 | `--level` | Níveis, separados por vírgula: `Error`, `Warning`, `Information`, `AuditSuccess`, `AuditFailure` | `--level Error,Warning` |
 | `--source` | Filtra por origem do evento (substring, pode listar várias separadas por vírgula) | `--source MsiInstaller` |
 | `--user` | Filtra por usuário (substring de `DOMINIO\usuario`) | `--user kever` |

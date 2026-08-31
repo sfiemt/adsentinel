@@ -21,13 +21,13 @@ pip install -r requirements.txt
 Monitorar eventos do Active Directory (modo dedicado, ver seção abaixo):
 
 ```powershell
-python event_viewer.py --ad --limit 10
+python main.py --ad --limit 10
 ```
 
 Ler qualquer outro log (ex: Application, últimos 10 eventos):
 
 ```powershell
-python event_viewer.py --log Application --limit 10
+python main.py --log Application --limit 10
 ```
 
 ## Monitoramento do Active Directory
@@ -38,8 +38,8 @@ domínio), use o modo `--ad`. Ele aplica automaticamente `--log Security` e os
 Event IDs listados em [CLAUDE.md](CLAUDE.md):
 
 ```powershell
-python event_viewer.py --ad --limit 200 --output csv --outfile ad_events.csv
-python event_viewer.py --ad --watch
+python main.py --ad --limit 200 --output csv --outfile ad_events.csv
+python main.py --ad --watch
 ```
 
 Cada evento retornado nesse modo inclui o campo `action` com a ação
@@ -47,20 +47,20 @@ correspondente (ex: "Usuario criado", "Conta bloqueada"). É possível
 sobrepor `--log` ou `--event-id` manualmente para restringir ainda mais:
 
 ```powershell
-python event_viewer.py --ad --user "joao.silva"
-python event_viewer.py --ad --event-id 4625,4740,4767   # so falhas de logon e bloqueios/desbloqueios
+python main.py --ad --user "joao.silva"
+python main.py --ad --event-id 4625,4740,4767   # so falhas de logon e bloqueios/desbloqueios
 ```
 
 Ver a tabela de IDs suportados a qualquer momento:
 
 ```powershell
-python event_viewer.py --list-ad-ids
+python main.py --list-ad-ids
 ```
 
 ## Listar logs disponíveis
 
 ```powershell
-python event_viewer.py --list-logs
+python main.py --list-logs
 ```
 
 Lista todos os canais/logs de evento disponíveis no computador (ex: `Application`, `System`, `Security`, `Setup`, e diversos logs específicos de aplicativos/serviços).
@@ -94,31 +94,31 @@ Os filtros podem ser combinados livremente.
 **Últimos 20 erros e avisos do log System:**
 
 ```powershell
-python event_viewer.py --log System --level Error,Warning --limit 20
+python main.py --log System --level Error,Warning --limit 20
 ```
 
 **Eventos de logon/logoff/AD em um período, exportados para CSV:**
 
 ```powershell
-python event_viewer.py --ad --event-id 4624,4625,4634 --start "2026-08-01" --end "2026-08-30" --output csv --outfile logons.csv
+python main.py --ad --event-id 4624,4625,4634 --start "2026-08-01" --end "2026-08-30" --output csv --outfile logons.csv
 ```
 
 **Buscar uma palavra-chave nas mensagens do Application, salvando em JSON:**
 
 ```powershell
-python event_viewer.py --log Application --keyword "falha" --output json --outfile falhas.json
+python main.py --log Application --keyword "falha" --output json --outfile falhas.json
 ```
 
 **Filtrar por origem e por usuário:**
 
 ```powershell
-python event_viewer.py --log Application --source MsiInstaller --user kever
+python main.py --log Application --source MsiInstaller --user kever
 ```
 
 **Acompanhar novos eventos do log System em tempo real:**
 
 ```powershell
-python event_viewer.py --log System --watch
+python main.py --log System --watch
 ```
 
 Pressione `Ctrl+C` para interromper o modo `--watch`.

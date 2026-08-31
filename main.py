@@ -1,5 +1,5 @@
 """
-event_viewer.py
+main.py
 
 Leitor/consulta de logs do Windows Event Viewer (Application, System, Security
 ou qualquer outro log clássico) com filtros por ID de evento, nível/tipo,

@@ -7,7 +7,7 @@ Controllers/Windows) para acompanhar ações administrativas e de segurança:
 criação/exclusão/alteração de usuários e grupos, logons/logoffs, bloqueios de
 conta e mudanças em objetos do AD e na política de domínio.
 
-O programa principal é [event_viewer.py](event_viewer.py), que lê o Event
+O programa principal é [main.py](main.py), que lê o Event
 Viewer do Windows via `pywin32`, filtra por Event ID/nível/origem/data/usuário
 e exporta os resultados (console, CSV ou JSON), incluindo um modo `--watch`
 para acompanhamento em tempo real — usado aqui para vigiar os Event IDs do AD
@@ -56,26 +56,26 @@ evento retornado com a coluna/campo `action` (a "Ação" correspondente).
 Consultar o histórico recente:
 
 ```powershell
-python event_viewer.py --ad --limit 200 --output csv --outfile ad_events.csv
+python main.py --ad --limit 200 --output csv --outfile ad_events.csv
 ```
 
 Acompanhar esses eventos em tempo real:
 
 ```powershell
-python event_viewer.py --ad --watch
+python main.py --ad --watch
 ```
 
 Combinar com outros filtros (ex: apenas um usuário, ou um subconjunto de IDs):
 
 ```powershell
-python event_viewer.py --ad --user "joao.silva"
-python event_viewer.py --ad --event-id 4625,4740,4767   # so falhas de logon e bloqueios/desbloqueios
+python main.py --ad --user "joao.silva"
+python main.py --ad --event-id 4625,4740,4767   # so falhas de logon e bloqueios/desbloqueios
 ```
 
 Ver a tabela de IDs suportados a qualquer momento:
 
 ```powershell
-python event_viewer.py --list-ad-ids
+python main.py --list-ad-ids
 ```
 
 Veja [README.md](README.md) para a lista completa de opções e exemplos de uso

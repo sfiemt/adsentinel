@@ -339,7 +339,7 @@ def main(argv=None) -> int:
             if args.server:
                 print(
                     f"Dica: leitura remota do log 'Security' em '{args.server}' exige que sua conta "
-                    "tenha permissao' (nao no seu PC). Peca para adicionar seu usuario ao grupo local "
+                    "tenha permissao la' (nao no seu PC). Peca para adicionar seu usuario ao grupo local "
                     "'Event Log Readers' no servidor remoto, ou conceda o privilegio 'Manage auditing and "
                     "security log' (Local Security Policy / GPO). Rodar como Administrador local nao resolve "
                     "nesse caso.",

@@ -335,10 +335,21 @@ def main(argv=None) -> int:
 
     except Exception as exc:
         print(f"Erro ao ler o log '{args.log}': {exc}", file=sys.stderr)
-        print(
-            "Dica: o log 'Security' geralmente exige executar este script como Administrador.",
-            file=sys.stderr,
-        )
+        if args.log == AD_LOG_NAME:
+            if args.server:
+                print(
+                    f"Dica: leitura remota do log 'Security' em '{args.server}' exige que sua conta "
+                    "tenha permissao' (nao no seu PC). Peca para adicionar seu usuario ao grupo local "
+                    "'Event Log Readers' no servidor remoto, ou conceda o privilegio 'Manage auditing and "
+                    "security log' (Local Security Policy / GPO). Rodar como Administrador local nao resolve "
+                    "nesse caso.",
+                    file=sys.stderr,
+                )
+            else:
+                print(
+                    "Dica: o log 'Security' geralmente exige executar este script como Administrador.",
+                    file=sys.stderr,
+                )
         return 1
 
     if args.output == "console":
